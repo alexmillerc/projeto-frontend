@@ -24,26 +24,35 @@
 
 <body>
 
-  <header>
-    <h1 class="app-title">Título da sua página ou webapp</h1>
-    <nav>Menu de navegação principal</nav>
-  </header>
+  <div class="titulo"><h1 >My Time</h1></div>
+    
+  <p id="localizacao" class="local">Quer saber onde voce está e a temperatura? Vá em frente!</p>
+  <br>
+  <p id="mostra-cidade" class="local" hidden><b>Cidade: </b><i id="cidade"></i></p>
+  <p id="mostra-pais" class="local" hidden><b>País: </b><i id="pais"></i></p>
+  <p id="mostra-temp" class="local" hidden><b>Temperatura: </b><i id="temp">0</i>ºC</p>  
+  <p id="mostra-umid" class="local" hidden><b>Umidade: </b><i id="umid">0</i>%</p>  
+  <br><br><br>
+  <button id="restart" onclick="getLocation()" onclick="location.reload()">Meu Local</button>
 
-  <main>
-    <section class="main-feature">
-        Seu conteúdo ou feature principal vem aqui
-    </section>
-    <aside class="secundary-feature">
-        Algum conteúdo ou feature não-principal de apoio
-    </aside>
-  </main>
-  
-  <footer>
-    Informações gerais, recursos secundários de apoio,nome do autor.
-  </footer>
+ </div>
+
+ <br>
+
+
+ <div class="rodape">
+  <p><b id="direitos">My Time - Copyright © 2020.</b><br>
+      Autor: Alex Miller Carvalho<br>
+      Contato: alexmillerc@gmail.com<br>
+  </p>
+</div>
+   
+
+</body>
+
+
 
   <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
