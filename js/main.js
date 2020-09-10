@@ -1,8 +1,11 @@
+
+
 var btn = document.getElementById("btn")
 btn.addEventListener("click", getGeolocation);
 
 
 function getGeolocation() {
+
   var e = document.getElementById("location");
   var x = document.getElementById("date");
   console.log(x);
@@ -14,8 +17,8 @@ function getGeolocation() {
   };
 
   function showPosition(pos) {
-    let lat = pos.coords.latitude;
-    let long = pos.coords.longitude;
+    var lat = pos.coords.latitude;
+    var long = pos.coords.longitude;
     var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
     fetchApi(url);
   };
@@ -56,7 +59,6 @@ function fetchApi(url) {
     .then((data) => {
       console.log(data)
 
-
       var tempCF =
         Math.round(data.main.temp_max) +
         "ºC | " +
@@ -67,18 +69,22 @@ function fetchApi(url) {
 
       if (Math.round(data.main.temp_max) > 25) {
         document.getElementById("canvas--fire").hidden = false;
+        document.getElementById("canvas--normal").hidden = true;
+        document.getElementById("canvas--cold").hidden = true;
       }
       else {
         if (Math.round(data.main.temp_max) > 18) {
+          document.getElementById("canvas--fire").hidden = true;
           document.getElementById("canvas--normal").hidden = false;
+          document.getElementById("canvas--cold").hidden = true;
         } else {
-          document.getElementById("canvas--cold").hidden = false
+          document.getElementById("canvas--fire").hidden = true;
+          document.getElementById("canvas--normal").hidden = true;
+          document.getElementById("canvas--cold").hidden = false;
         }
       };
 
       temp.innerText = tempCF;
-  
-
 
       var date = new Date();
 
@@ -124,9 +130,11 @@ function fetchApi(url) {
 
       dateview.innerText = date;
 
+
     });
 
 };
+
 
 
 var pincel = document.getElementById('canvas--fire').getContext('2d');
