@@ -14,7 +14,6 @@
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
@@ -24,45 +23,50 @@
 
 <body>
 
-  <div class="titulo"><h1 >My Time</h1></div>
-    
-  <p id="localizacao" class="local">Quer saber onde voce está e a temperatura? Vá em frente!</p>
-  <br>
-  <p id="mostra-cidade" class="local" hidden><b>Cidade: </b><i id="cidade"></i></p>
-  <p id="mostra-pais" class="local" hidden><b>País: </b><i id="pais"></i></p>
-  <p id="mostra-temp" class="local" hidden><b>Temperatura: </b><i id="temp">0</i>ºC</p>  
-  <p id="mostra-umid" class="local" hidden><b>Umidade: </b><i id="umid">0</i>%</p>  
-  <br><br><br>
-  <button id="restart" onclick="getLocation()" onclick="location.reload()">Meu Local</button>
 
- </div>
+  <div class='box'>
 
- <br>
+    <div class='wave -one'></div>
+    <div class='wave -two'></div>
+    <div class='wave -three'></div>
 
+    <div class="weathercon">
+      <canvas id="canvas--fire" dth="400" height="200" width="150" hidden></canvas>
+      <canvas id="canvas--normal" dth="400" height="200" width="150" hidden></canvas>
+      <canvas id="canvas--cold" dth="400" height="200" width="150" hidden></canvas>
+    </div>
 
- <div class="rodape">
-  <p><b id="direitos">My Time - Copyright © 2020.</b><br>
-      Autor: Alex Miller Carvalho<br>
-      Contato: alexmillerc@gmail.com<br>
-  </p>
-</div>
-   
+    <div class="info">
+      <h2 class="location"><i id="location">Cidade</i></h2>
+      <p class="date"><i id="date">Data</i></p>
+      <h1 class="temp"><i id="temp">0Cº | 0 ºF</i></h1>
+      <button id="btn">Meu Local</button>
+    </div>
+
+  </div>
+
+  <span>Ative o GPS para ver os dados do seu local! :)</span>
+
+  <span>
+    <b>My Time - Copyright © 2020.</b><br>
+       Autor: Alex Miller Carvalho<br>
+       Contato: alexmillerc@gmail.com<br>
+    </p>
+  </span>
+
 
 </body>
 
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 
 
-  <!-- Add your site or application content here -->
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
