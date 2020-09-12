@@ -12,28 +12,43 @@ body {
   flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
-}
-
-html,
-body {
   height: 100%;
 }
 
 html {
+  height: 100%;
   background: #eee;
 }
 
+@keyframes "drift" {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
 .box {
   width: 30vw;
   height: 70vh;
   border-radius: 5px;
-  box-shadow: 0 2px 30px rgba(black, 0.2);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
   background: #44c3de;
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
   min-width: 300px;
   min-height: 450px;
+}
+.box:after {
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
 }
 
 .box__wave {
@@ -62,27 +77,6 @@ html {
   animation: drift 7000ms infinite linear;
   opacity: 0.1;
   z-index: 3 !important;
-}
-
-.box:after {
-  content: "";
-  display: block;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  transform: translate3d(0, 0, 0);
-}
-
-
-@keyframes drift {
-  from {
-    transform: rotate(0deg);
-  }
-  from {
-    transform: rotate(360deg);
-  }
 }
 
 .box__info {
@@ -128,21 +122,24 @@ html {
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
-  position:  relative;
+  position: relative;
   bottom: 0;
   width: 50%;
   height: 15%;
   margin-top: 10%;
   z-index: 5;
- 
 }
-
 .box__info--btn:hover {
   opacity: 0.6;
   color: black;
   cursor: pointer;
 }
 
+.footer {
+  width: 100vw;
+  text-align: center;
+  color: grey;
+}
 
 @media (min-width: 992px) {
   .box {
@@ -169,11 +166,6 @@ html {
   .box__info--btn {
     margin-top: 5%;
   }
-
 }
 
-.footer {
-  width: 100vw;
-  text-align: center;
-  color: grey;
-}
+/*# sourceMappingURL=main.css.map */

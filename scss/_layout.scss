@@ -1,0 +1,133 @@
+@keyframes "drift" {
+	from {
+		transform: rotate(0deg);
+	}
+	from {
+		transform: rotate(360deg);
+	}
+}
+
+.box {
+	width: 30vw;
+	height: 70vh;
+	border-radius: 5px;
+	box-shadow: 0 2px 30px rgba(black, 0.2);
+	background: #44c3de;
+	position: relative;
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+	min-width: 300px;
+	min-height: 450px;
+	&:after {
+		content: "";
+		display: block;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 11;
+		transform: translate3d(0, 0, 0);
+	}
+}
+.box__wave {
+	opacity: 0.3;
+	position: absolute;
+	top: 120%;
+	left: 50%;
+	background: white;
+	width: 500px;
+	height: 500px;
+	margin-left: -250px;
+	margin-top: -250px;
+	transform-origin: 50% 48%;
+	border-radius: 43%;
+	animation: drift 3000ms infinite linear;
+	z-index: 1;
+}
+.box__wave.box__wave--three {
+	animation: drift 5000ms infinite linear;
+	z-index: 2 !important;
+	opacity: 0.2;
+}
+.box__wave.box__wave--two {
+	animation: drift 7000ms infinite linear;
+	opacity: 0.1;
+	z-index: 3 !important;
+}
+.box__info {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 45%;
+	z-index: 4;
+}
+.box__info--location {
+	text-align: center;
+	font-weight: 800;
+}
+.box__info--date {
+	text-align: center;
+	margin-top: 5%;
+	color: grey;
+	font-size: 90%;
+}
+.box__info--temp {
+	margin-top: 10%;
+	text-align: center;
+}
+.box__canvas {
+	height: 55%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3em;
+}
+.box__info--btn {
+	background-color: #44c3de;
+	color: black;
+	display: block;
+	margin: auto;
+	font-weight: bold;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	text-align: center;
+	position: relative;
+	bottom: 0;
+	width: 50%;
+	height: 15%;
+	margin-top: 10%;
+	z-index: 5;
+	&:hover {
+		opacity: 0.6;
+		color: black;
+		cursor: pointer;
+	}
+}
+.footer {
+	width: 100vw;
+	text-align: center;
+	color: grey;
+}
+@media (min-width: 992px) {
+	.box {
+		width: 30vw;
+		height: 80vh;
+	}
+	.box__wave {
+		width: 950px;
+		height: 950px;
+		margin-left: -475px;
+		margin-top: -475px;
+		top: 130%;
+	}
+	.box__canvas {
+		font-size: 5em;
+	}
+	.box__info {
+		font-size: 1.5rem;
+	}
+	.box__info--btn {
+		margin-top: 5%;
+	}
+}
