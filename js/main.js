@@ -1,14 +1,10 @@
-
-
-var btn = document.getElementById("btn")
+var btn = document.getElementById("box__info--btn")
 btn.addEventListener("click", getGeolocation);
 
 
 function getGeolocation() {
-
-  var e = document.getElementById("location");
-  var x = document.getElementById("date");
-  console.log(x);
+  let e = document.getElementById("box__info--location");
+  let x = document.getElementById("box__info--date");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   }
@@ -17,9 +13,13 @@ function getGeolocation() {
   };
 
   function showPosition(pos) {
-    var lat = pos.coords.latitude;
-    var long = pos.coords.longitude;
-    var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
+    let lat = pos.coords.latitude;
+    let long = pos.coords.longitude;
+
+    console.log(lat)
+    console.log(long)
+
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&APPID=ff82e634261a603c20b82654d076ea5c`;
     fetchApi(url);
   };
 
@@ -46,12 +46,13 @@ function getGeolocation() {
 
 };
 
-
-
 function fetchApi(url) {
-  let location = document.getElementById('location');
-  let dateview = document.getElementById('date');
-  let temp = document.getElementById('temp');
+  let location = document.getElementById('box__info--location');
+  let dateview = document.getElementById('box__info--date');
+  let temp = document.getElementById('box__info--temp');
+
+  console.log(url)
+
   fetch(url)
     .then((data) => {
       return data.json();
@@ -59,28 +60,24 @@ function fetchApi(url) {
     .then((data) => {
       console.log(data)
 
+      var tempC =  Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9))
+
       var tempCF =
-        Math.round(data.main.temp_max) +
+        Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9)) +
         "ºC | " +
-        Math.round(Math.round(data.main.temp_max) * 1.8 + 32) +
+        Math.round(data.main.temp_max) +
         "ºF";
       location.innerText = data.name.toUpperCase();
-      console.log(data.main.name)
+      console.log(data.name)
 
-      if (Math.round(data.main.temp_max) > 25) {
-        document.getElementById("canvas--fire").hidden = false;
-        document.getElementById("canvas--normal").hidden = true;
-        document.getElementById("canvas--cold").hidden = true;
+      if (tempC > 28) {
+        document.getElementById("box__canvas--fire").hidden = false;
       }
       else {
-        if (Math.round(data.main.temp_max) > 18) {
-          document.getElementById("canvas--fire").hidden = true;
-          document.getElementById("canvas--normal").hidden = false;
-          document.getElementById("canvas--cold").hidden = true;
+        if (tempC > 18) {
+          document.getElementById("box__canvas--normal").hidden = false;
         } else {
-          document.getElementById("canvas--fire").hidden = true;
-          document.getElementById("canvas--normal").hidden = true;
-          document.getElementById("canvas--cold").hidden = false;
+          document.getElementById("box__canvas--cold").hidden = false
         }
       };
 
@@ -130,49 +127,84 @@ function fetchApi(url) {
 
       dateview.innerText = date;
 
-
     });
 
 };
 
 
-
-var pincel = document.getElementById('canvas--fire').getContext('2d');
+var pincel = document.getElementById('box__canvas--normal').getContext('2d');
 pincel.beginPath();
 pincel.arc(75, 75, 50, 0, Math.PI * 2, true); // Rosto
 pincel.fillStyle = 'yellow';
 pincel.fill();
 pincel.moveTo(110, 75);
 pincel.arc(75, 75, 35, 0, Math.PI, false); // Boca
+pincel.moveTo(111, 76);
+pincel.arc(75, 75, 35, 0, Math.PI, false); // Boca
 pincel.moveTo(65, 65);
 pincel.arc(60, 65, 5, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 4, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 3, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 2, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 1, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 0, 0, Math.PI * 2, true); // olho esquerdo
 pincel.moveTo(95, 65);
 pincel.arc(90, 65, 5, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 4, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 3, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 2, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 1, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 0, 0, Math.PI * 2, true); // Olho direito
 pincel.stroke();
 
-var pincel = document.getElementById('canvas--normal').getContext('2d');
+var pincel = document.getElementById('box__canvas--fire').getContext('2d');
 pincel.beginPath();
 pincel.arc(75, 75, 50, 0, Math.PI * 2, true); // Rosto
-pincel.fillStyle = 'yellow';
+pincel.arc(75, 75, 51, 0, Math.PI * 2, true); // Rosto
+pincel.fillStyle = 'orange';
 pincel.fill();
 pincel.moveTo(50, 90);
 pincel.arc(100, 90, 0, 0, Math.PI, true); // Boca
+pincel.moveTo(51, 91);
+pincel.arc(100, 90, 0, 0, Math.PI, true); // Boca
 pincel.moveTo(65, 65);
 pincel.arc(60, 65, 5, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 4, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 3, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 2, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 1, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 0, 0, Math.PI * 2, true); // olho esquerdo
 pincel.moveTo(95, 65);
 pincel.arc(90, 65, 5, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 4, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 3, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 2, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 1, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 0, 0, Math.PI * 2, true); // Olho direito
 pincel.stroke();
 
-var pincel = document.getElementById('canvas--cold').getContext('2d');
+var pincel = document.getElementById('box__canvas--cold').getContext('2d');
 pincel.beginPath();
 pincel.arc(75, 75, 50, 0, Math.PI * 2, true); // Rosto
-pincel.fillStyle = 'yellow';
+pincel.fillStyle = 'blue';
 pincel.fill();
 pincel.moveTo(100, 110);
 pincel.arc(75, 110, 25, 0, Math.PI, true); // Boca
+pincel.moveTo(101, 111);
+pincel.arc(75, 110, 25, 0, Math.PI, true); // Boca
 pincel.moveTo(65, 65);
 pincel.arc(60, 65, 5, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 4, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 3, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 2, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 1, 0, Math.PI * 2, true); // olho esquerdo
+pincel.arc(60, 65, 0, 0, Math.PI * 2, true); // olho esquerdo
 pincel.moveTo(95, 65);
 pincel.arc(90, 65, 5, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 4, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 3, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 2, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 1, 0, Math.PI * 2, true); // Olho direito
+pincel.arc(90, 65, 0, 0, Math.PI * 2, true); // Olho direito
 pincel.stroke();
 
