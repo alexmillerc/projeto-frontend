@@ -20,7 +20,7 @@ html {
   background: #eee;
 }
 
-@keyframes "drift" {
+@keyframes drift {
   from {
     transform: rotate(0deg);
   }
