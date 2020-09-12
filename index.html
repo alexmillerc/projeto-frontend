@@ -23,37 +23,34 @@
 
 <body>
 
-
   <div class='box'>
 
-    <div class='wave -one'></div>
-    <div class='wave -two'></div>
-    <div class='wave -three'></div>
+    <div class='box__wave box__wave--one'></div>
+    <div class='box__wave box__wave--two'></div>
+    <div class='box__wave box__wave--three'></div>
 
-    <div class="weathercon">
-      <canvas id="canvas--fire" dth="400" height="200" width="150" hidden></canvas>
-      <canvas id="canvas--normal" dth="400" height="200" width="150" hidden></canvas>
-      <canvas id="canvas--cold" dth="400" height="200" width="150" hidden></canvas>
+    <div class="box__canvas">
+      <canvas id="box__canvas--fire" dth="300" height="200" width="150" hidden></canvas>
+      <canvas id="box__canvas--normal" dth="300" height="200" width="150" hidden></canvas>
+      <canvas id="box__canvas--cold" dth="400" height="200" width="150" hidden></canvas>
     </div>
-
-    <div class="info">
-      <h2 class="location"><i id="location">Cidade</i></h2>
-      <p class="date"><i id="date">Data</i></p>
-      <h1 class="temp"><i id="temp">0Cº | 0 ºF</i></h1>
-      <button id="btn">Meu Local</button>
+    <div class="box__info">
+      <h2 class="box__info--location"><i id="box__info--location">Cidade</i></h2>
+      <p class="box__info--date"><i id="box__info--date">Data</i></p>
+      <h1 class="box__info--temp"><i id="box__info--temp">0Cº | 0 ºF</i></h1>
+      <button class="box__info--btn" id="box__info--btn">Meu Local</button>
     </div>
-
   </div>
 
-  <span>Ative o GPS para ver os dados do seu local! :)</span>
-
-  <span>
+  <span class="footer">
+    Ative o seu GPS para ver o seu! :) <br>
+    --------------------------------------------- <br>
     <b>My Time - Copyright © 2020.</b><br>
-       Autor: Alex Miller Carvalho<br>
-       Contato: alexmillerc@gmail.com<br>
+    --------------------------------------------- <br>
+    Autor: Alex Miller Carvalho<br>
+    Contato: alexmillerc@gmail.com<br>
     </p>
   </span>
-
 
 </body>
 

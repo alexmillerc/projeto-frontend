@@ -14,7 +14,8 @@ body {
   width: 100vw;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -23,19 +24,19 @@ html {
 }
 
 .box {
-  width: 20vw;
-  height: 80vh;
+  width: 30vw;
+  height: 70vh;
   border-radius: 5px;
   box-shadow: 0 2px 30px rgba(black, 0.2);
   background: #44c3de;
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
-  min-width: 200px;
-  min-height: 350px;
+  min-width: 300px;
+  min-height: 450px;
 }
 
-.wave {
+.box__wave {
   opacity: 0.3;
   position: absolute;
   top: 120%;
@@ -51,13 +52,13 @@ html {
   z-index: 1;
 }
 
-.wave.-three {
+.box__wave.box__wave--three {
   animation: drift 5000ms infinite linear;
   z-index: 2 !important;
   opacity: 0.2;
 }
 
-.wave.-two {
+.box__wave.box__wave--two {
   animation: drift 7000ms infinite linear;
   opacity: 0.1;
   z-index: 3 !important;
@@ -74,6 +75,7 @@ html {
   transform: translate3d(0, 0, 0);
 }
 
+
 @keyframes drift {
   from {
     transform: rotate(0deg);
@@ -83,7 +85,7 @@ html {
   }
 }
 
-.info {
+.box__info {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -91,24 +93,24 @@ html {
   z-index: 4;
 }
 
-.location {
+.box__info--location {
   text-align: center;
   font-weight: 800;
 }
 
-.date {
+.box__info--date {
   text-align: center;
   margin-top: 5%;
   color: grey;
   font-size: 90%;
 }
 
-.temp {
+.box__info--temp {
   margin-top: 10%;
   text-align: center;
 }
 
-.weathercon {
+.box__canvas {
   height: 55%;
   display: flex;
   justify-content: center;
@@ -116,36 +118,61 @@ html {
   font-size: 3em;
 }
 
-#btn {
+.box__info--btn {
   background-color: #44c3de;
   color: black;
   display: block;
-  margin: 0 auto;
+  margin: auto;
   font-weight: bold;
   border: none;
-  padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 15%;
   text-align: center;
+  position:  relative;
+  bottom: 0;
+  width: 50%;
+  height: 15%;
+  margin-top: 10%;
+  z-index: 5;
+ 
 }
 
-#btn:hover {
+.box__info--btn:hover {
   opacity: 0.6;
   color: black;
   cursor: pointer;
 }
 
+
 @media (min-width: 992px) {
   .box {
-    height: 60vh;
+    width: 30vw;
+    height: 80vh;
   }
-  .wave {
-    top: 120%;
+
+  .box__wave {
+    width: 950px;
+    height: 950px;
+    margin-left: -475px;
+    margin-top: -475px;
+    top: 130%;
   }
+
+  .box__canvas {
+    font-size: 5em;
+  }
+
+  .box__info {
+    font-size: 1.5rem;
+  }
+
+  .box__info--btn {
+    margin-top: 5%;
+  }
+
 }
 
-body>span {
+.footer {
   width: 100vw;
   text-align: center;
   color: grey;
