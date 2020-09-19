@@ -65,7 +65,7 @@ function fetchApi(url) {
 
       function temperature(tempC, tempF = Math.round(data.main.temp_max)) {
         tempC = Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9))
-        var tempCF = tempC + "ºC | " + tempF + "ºF";
+        var tempCF = `${tempC}ºC | ${tempF}ºF`;
 
         if (tempC > 28) {
           document.getElementById("box__canvas--fire").hidden = false;
@@ -78,7 +78,7 @@ function fetchApi(url) {
           }
         };
 
-        return [tempCF];
+        return[tempCF];
       }
 
       var date = new Date();
@@ -133,17 +133,9 @@ function fetchApi(url) {
 
 
       var minutes =
-        date.getMinutes() < 11 ? "0" + date.getMinutes() : date.getMinutes();
+      `${date.getMinutes() < 11 ? "0" + date.getMinutes() : date.getMinutes()}`;
       var date =
-        weekday[date.getDay()].toUpperCase() +
-        " | " +
-        date.getDate() +
-        " " +
-        monthsModel.getMonths()[date.getMonth()].toUpperCase().substring(0, 3) +
-        " | " +
-        date.getHours() +
-        ":" +
-        minutes;
+      `${weekday[date.getDay()].toUpperCase()} | ${date.getDate()} ${monthsModel.getMonths()[date.getMonth()].toUpperCase().substring(0, 3)} | ${date.getHours()}:${minutes}`;
 
       console.log(date)
 
