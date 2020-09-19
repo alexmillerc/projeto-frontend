@@ -13,8 +13,8 @@ function getGeolocation() {
   };
 
   function showPosition(pos) {
-    let lat = pos.coords.latitude;
-    let long = pos.coords.longitude;
+    const coordinates = { lat: pos.coords.latitude, long: pos.coords.longitude }
+    let { lat, long } = coordinates
 
     console.log(lat)
     console.log(long)
