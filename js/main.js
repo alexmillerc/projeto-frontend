@@ -66,7 +66,7 @@ function fetchApi(url) {
       function temperature(tempC, tempF = Math.round(data.main.temp_max)) {
         tempC = Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9))
         var tempCF = tempC + "ºC | " + tempF + "ºF";
-        
+
         if (tempC > 28) {
           document.getElementById("box__canvas--fire").hidden = false;
         }
@@ -78,25 +78,49 @@ function fetchApi(url) {
           }
         };
 
-        return[tempCF];
+        return [tempCF];
       }
-      
+
       var date = new Date();
 
-      var months = [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro"
-      ];
+      class Months {
+        constructor(name) {
+          this.id = undefined;
+          this.name = name;
+          this.months = new Array();
+        }
+
+        getname() {
+          return this.name;
+        };
+
+        getMonths() {
+          return this.months;
+        };
+
+        addMonths(url) {
+          this.months.push(url);
+        };
+
+      }
+
+      const monthsModel = new Months("Meses do Ano");
+
+      monthsModel.addMonths("Janeiro")
+      monthsModel.addMonths("Fevereiro")
+      monthsModel.addMonths("Março")
+      monthsModel.addMonths("Abril")
+      monthsModel.addMonths("Maio")
+      monthsModel.addMonths("Junho")
+      monthsModel.addMonths("Julho")
+      monthsModel.addMonths("Agosto")
+      monthsModel.addMonths("Setembro")
+      monthsModel.addMonths("Outubro")
+      monthsModel.addMonths("Novembro")
+      monthsModel.addMonths("Dezembro")
+
+      console.log(monthsModel.getname());
+      console.log(monthsModel.getMonths());
 
       var weekday = new Array(7);
       weekday[0] = "Domingo";
@@ -113,9 +137,9 @@ function fetchApi(url) {
       var date =
         weekday[date.getDay()].toUpperCase() +
         " | " +
-        months[date.getMonth()].toUpperCase().substring(0, 3) +
-        " " +
         date.getDate() +
+        " " +
+        monthsModel.getMonths()[date.getMonth()].toUpperCase().substring(0, 3) +
         " | " +
         date.getHours() +
         ":" +
