@@ -135,6 +135,7 @@ function fetchApi(url) {
 var pincel = document.getElementById('box__canvas--normal').getContext('2d');
 pincel.beginPath();
 pincel.arc(75, 75, 50, 0, Math.PI * 2, true); // Rosto
+pincel.arc(75, 75, 51, 0, Math.PI * 2, true); // Rosto
 pincel.fillStyle = 'yellow';
 pincel.fill();
 pincel.moveTo(110, 75);
@@ -186,6 +187,7 @@ pincel.stroke();
 var pincel = document.getElementById('box__canvas--cold').getContext('2d');
 pincel.beginPath();
 pincel.arc(75, 75, 50, 0, Math.PI * 2, true); // Rosto
+pincel.arc(75, 75, 51, 0, Math.PI * 2, true); // Rosto
 pincel.fillStyle = 'blue';
 pincel.fill();
 pincel.moveTo(100, 110);
