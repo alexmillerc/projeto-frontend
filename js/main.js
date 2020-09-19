@@ -60,29 +60,27 @@ function fetchApi(url) {
     .then((data) => {
       console.log(data)
 
-      var tempC =  Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9))
-
-      var tempCF =
-        Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9)) +
-        "ºC | " +
-        Math.round(data.main.temp_max) +
-        "ºF";
       location.innerText = data.name.toUpperCase();
-      console.log(data.name)
+      temp.innerText = temperature(data.main.temp_max);
 
-      if (tempC > 28) {
-        document.getElementById("box__canvas--fire").hidden = false;
-      }
-      else {
-        if (tempC > 18) {
-          document.getElementById("box__canvas--normal").hidden = false;
-        } else {
-          document.getElementById("box__canvas--cold").hidden = false
+      function temperature(tempC, tempF = Math.round(data.main.temp_max)) {
+        tempC = Math.round(Math.round(data.main.temp_max - 32).toFixed(1) * (5 / 9))
+        var tempCF = tempC + "ºC | " + tempF + "ºF";
+        
+        if (tempC > 28) {
+          document.getElementById("box__canvas--fire").hidden = false;
         }
-      };
+        else {
+          if (tempC > 18) {
+            document.getElementById("box__canvas--normal").hidden = false;
+          } else {
+            document.getElementById("box__canvas--cold").hidden = false
+          }
+        };
 
-      temp.innerText = tempCF;
-
+        return[tempCF];
+      }
+      
       var date = new Date();
 
       var months = [
