@@ -98,8 +98,8 @@ function fetchApi(url) {
           return this.months;
         };
 
-        addMonths(url) {
-          this.months.push(url);
+        addMonths(month) {
+          this.months.push(month);
         };
 
       }
