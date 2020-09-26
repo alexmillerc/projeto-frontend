@@ -78,7 +78,7 @@ function fetchApi(url) {
           }
         };
 
-        return[tempCF];
+        return [tempCF];
       }
 
       var date = new Date();
@@ -133,9 +133,9 @@ function fetchApi(url) {
 
 
       var minutes =
-      `${date.getMinutes() < 11 ? "0" + date.getMinutes() : date.getMinutes()}`;
+        `${date.getMinutes() < 11 ? "0" + date.getMinutes() : date.getMinutes()}`;
       var date =
-      `${weekday[date.getDay()].toUpperCase()} | ${date.getDate()} ${monthsModel.getMonths()[date.getMonth()].toUpperCase().substring(0, 3)} | ${date.getHours()}:${minutes}`;
+        `${weekday[date.getDay()].toUpperCase()} | ${date.getDate()} ${monthsModel.getMonths()[date.getMonth()].toUpperCase().substring(0, 3)} | ${date.getHours()}:${minutes}`;
 
       console.log(date)
 
@@ -223,4 +223,12 @@ pincel.arc(90, 65, 2, 0, Math.PI * 2, true); // Olho direito
 pincel.arc(90, 65, 1, 0, Math.PI * 2, true); // Olho direito
 pincel.arc(90, 65, 0, 0, Math.PI * 2, true); // Olho direito
 pincel.stroke();
+
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function () { console.log("Service Worker Registered"); });
+}
+
 
