@@ -23,26 +23,26 @@
 
 <body>
 
-  <div class='box'>
+  <div class='box' role="main">
 
     <div class='box__wave box__wave--one'></div>
     <div class='box__wave box__wave--two'></div>
     <div class='box__wave box__wave--three'></div>
 
-    <div class="box__canvas">
+    <div class="box__canvas" role="navigation" aria-labelledby="Emoticon">
       <canvas id="box__canvas--fire" dth="300" height="200" width="150" hidden alt="Emoticon de carinha laranja sem reação"></canvas>
       <canvas id="box__canvas--normal" dth="300" height="200" width="150" hidden alt="Emoticon de carinha amarela feliz"></canvas>
       <canvas id="box__canvas--cold" dth="400" height="200" width="150" hidden alt="Emoticon de carinha azul triste"></canvas>
     </div>
-    <div class="box__info" aria-labelledby="informações do local e clima">
+    <div class="box__info" role="navigation" aria-labelledby="informações do local e clima">
       <h2 class="box__info--location" aria-label="cidade do seu local"><i id="box__info--location">Cidade</i></h2>
       <p class="box__info--date" aria-label="dia da semana, mês, horas e minutos"><i id="box__info--date" >Data</i></p>
       <h1 class="box__info--temp" aria-label="temperatura em graus celsius e fahrenheit"><i id="box__info--temp" >0 ºC | 0 ºF</i></h1>
-      <button class="box__info--btn" id="box__info--btn" aria-label="clique aqui para achar o seu local"> Meu Local </button>
+      <button  type="button" class="box__info--btn" id="box__info--btn" aria-label="clique aqui para achar o seu local"> Meu Local </button>
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="footer" role=”contentinfo”>
     Ative o seu GPS para ver o seu! :) <br>
     --------------------------------------------- <br>
     <b>My Time - Copyright © 2020.</b><br>
